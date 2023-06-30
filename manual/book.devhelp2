@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" title="realmd" link="index.html" author="" name="" version="2" language="c">
+  <chapters>
+    <sub name="Administrative Guide" link="guide.html">
+      <sub name="Command manual pages" link="realm-manual.html">
+        <sub name="realm" link="realm.html"/>
+        <sub name="realmd.conf" link="realmd-conf.html"/>
+      </sub>
+      <sub name="Using with Active Directory" link="guide-active-directory.html">
+        <sub name="Discovering Active Directory domains" link="guide-active-directory.html#guide-active-directory-discover"/>
+        <sub name="Active Directory client software" link="guide-active-directory-client.html">
+          <sub name="Using SSSD with Active Directory" link="guide-active-directory-client.html#using-sssd-with-active-directory"/>
+          <sub name="Using Winbind with Active Directory" link="guide-active-directory-client.html#using-winbind-with-active-directory"/>
+        </sub>
+        <sub name="Joining an Active Directory domain" link="guide-active-directory-join.html"/>
+        <sub name="Logins using Domain Accounts" link="guide-active-directory-permit.html"/>
+      </sub>
+      <sub name="Using with IPA" link="guide-ipa.html">
+        <sub name="Discovering IPA domains" link="guide-ipa.html#discovering-ipa-domains"/>
+        <sub name="IPA client software" link="guide-ipa-client.html"/>
+        <sub name="Joining a IPA domain" link="guide-ipa-join.html"/>
+        <sub name="Logins using Domain Accounts" link="guide-ipa-permit.html"/>
+      </sub>
+      <sub name="Using with other Kerberos realms" link="guide-kerberos.html">
+        <sub name="Discovering Kerberos realms" link="guide-kerberos.html#discovering-kerberos-realms"/>
+      </sub>
+      <sub name="Integration" link="guide-integration.html"/>
+    </sub>
+    <sub name="Developer Reference" link="development.html">
+      <sub name="DBus Interface Reference" link="dbus-interface-reference.html">
+        <sub name="org.freedesktop.realmd.Provider" link="gdbus-org.freedesktop.realmd.Provider.html"/>
+        <sub name="org.freedesktop.realmd.Realm" link="gdbus-org.freedesktop.realmd.Realm.html"/>
+        <sub name="org.freedesktop.realmd.Kerberos" link="gdbus-org.freedesktop.realmd.Kerberos.html"/>
+        <sub name="org.freedesktop.realmd.KerberosMembership" link="gdbus-org.freedesktop.realmd.KerberosMembership.html"/>
+        <sub name="org.freedesktop.realmd.Service" link="gdbus-org.freedesktop.realmd.Service.html"/>
+      </sub>
+      <sub name="Raw DBus Interfaces" link="dbus-interface-raw.html"/>
+    </sub>
+  </chapters>
+  <functions>
+    <keyword type="method" name="The Discover() method" link="gdbus-org.freedesktop.realmd.Provider.html#gdbus-method-org-freedesktop-realmd-Provider.Discover"/>
+    <keyword type="property" name="The &quot;Name&quot; property" link="gdbus-org.freedesktop.realmd.Provider.html#gdbus-property-org-freedesktop-realmd-Provider.Name"/>
+    <keyword type="property" name="The &quot;Version&quot; property" link="gdbus-org.freedesktop.realmd.Provider.html#gdbus-property-org-freedesktop-realmd-Provider.Version"/>
+    <keyword type="property" name="The &quot;Realms&quot; property" link="gdbus-org.freedesktop.realmd.Provider.html#gdbus-property-org-freedesktop-realmd-Provider.Realms"/>
+    <keyword type="method" name="The Deconfigure() method" link="gdbus-org.freedesktop.realmd.Realm.html#gdbus-method-org-freedesktop-realmd-Realm.Deconfigure"/>
+    <keyword type="method" name="The ChangeLoginPolicy() method" link="gdbus-org.freedesktop.realmd.Realm.html#gdbus-method-org-freedesktop-realmd-Realm.ChangeLoginPolicy"/>
+    <keyword type="property" name="The &quot;Name&quot; property" link="gdbus-org.freedesktop.realmd.Realm.html#gdbus-property-org-freedesktop-realmd-Realm.Name"/>
+    <keyword type="property" name="The &quot;Configured&quot; property" link="gdbus-org.freedesktop.realmd.Realm.html#gdbus-property-org-freedesktop-realmd-Realm.Configured"/>
+    <keyword type="property" name="The &quot;SupportedInterfaces&quot; property" link="gdbus-org.freedesktop.realmd.Realm.html#gdbus-property-org-freedesktop-realmd-Realm.SupportedInterfaces"/>
+    <keyword type="property" name="The &quot;Details&quot; property" link="gdbus-org.freedesktop.realmd.Realm.html#gdbus-property-org-freedesktop-realmd-Realm.Details"/>
+    <keyword type="property" name="The &quot;RequiredPackages&quot; property" link="gdbus-org.freedesktop.realmd.Realm.html#gdbus-property-org-freedesktop-realmd-Realm.RequiredPackages"/>
+    <keyword type="property" name="The &quot;LoginFormats&quot; property" link="gdbus-org.freedesktop.realmd.Realm.html#gdbus-property-org-freedesktop-realmd-Realm.LoginFormats"/>
+    <keyword type="property" name="The &quot;LoginPolicy&quot; property" link="gdbus-org.freedesktop.realmd.Realm.html#gdbus-property-org-freedesktop-realmd-Realm.LoginPolicy"/>
+    <keyword type="property" name="The &quot;PermittedLogins&quot; property" link="gdbus-org.freedesktop.realmd.Realm.html#gdbus-property-org-freedesktop-realmd-Realm.PermittedLogins"/>
+    <keyword type="property" name="The &quot;PermittedGroups&quot; property" link="gdbus-org.freedesktop.realmd.Realm.html#gdbus-property-org-freedesktop-realmd-Realm.PermittedGroups"/>
+    <keyword type="property" name="The &quot;RealmName&quot; property" link="gdbus-org.freedesktop.realmd.Kerberos.html#gdbus-property-org-freedesktop-realmd-Kerberos.RealmName"/>
+    <keyword type="property" name="The &quot;DomainName&quot; property" link="gdbus-org.freedesktop.realmd.Kerberos.html#gdbus-property-org-freedesktop-realmd-Kerberos.DomainName"/>
+    <keyword type="method" name="The Join() method" link="gdbus-org.freedesktop.realmd.KerberosMembership.html#gdbus-method-org-freedesktop-realmd-KerberosMembership.Join"/>
+    <keyword type="method" name="The Leave() method" link="gdbus-org.freedesktop.realmd.KerberosMembership.html#gdbus-method-org-freedesktop-realmd-KerberosMembership.Leave"/>
+    <keyword type="property" name="The &quot;SuggestedAdministrator&quot; property" link="gdbus-org.freedesktop.realmd.KerberosMembership.html#gdbus-property-org-freedesktop-realmd-KerberosMembership.SuggestedAdministrator"/>
+    <keyword type="property" name="The &quot;SupportedJoinCredentials&quot; property" link="gdbus-org.freedesktop.realmd.KerberosMembership.html#gdbus-property-org-freedesktop-realmd-KerberosMembership.SupportedJoinCredentials"/>
+    <keyword type="property" name="The &quot;SupportedLeaveCredentials&quot; property" link="gdbus-org.freedesktop.realmd.KerberosMembership.html#gdbus-property-org-freedesktop-realmd-KerberosMembership.SupportedLeaveCredentials"/>
+    <keyword type="method" name="The Cancel() method" link="gdbus-org.freedesktop.realmd.Service.html#gdbus-method-org-freedesktop-realmd-Service.Cancel"/>
+    <keyword type="method" name="The SetLocale() method" link="gdbus-org.freedesktop.realmd.Service.html#gdbus-method-org-freedesktop-realmd-Service.SetLocale"/>
+    <keyword type="method" name="The Release() method" link="gdbus-org.freedesktop.realmd.Service.html#gdbus-method-org-freedesktop-realmd-Service.Release"/>
+    <keyword type="signal" name="The &quot;Diagnostics&quot; signal" link="gdbus-org.freedesktop.realmd.Service.html#gdbus-signal-org-freedesktop-realmd-Service.Diagnostics"/>
+  </functions>
+</book>
