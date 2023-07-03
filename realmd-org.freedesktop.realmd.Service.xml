@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<refentry id="gdbus-org.freedesktop.realmd.Service">
+  <refmeta>    <refentrytitle role="top_of_page" id="gdbus-interface-org-freedesktop-realmd-Service.top_of_page">org.freedesktop.realmd.Service</refentrytitle>
+  <indexterm zone="gdbus-interface-org-freedesktop-realmd-Service.top_of_page" significance="normal"><primary sortas="Service">org.freedesktop.realmd.Service</primary></indexterm>
+  </refmeta>  <refnamediv>    <refname>org.freedesktop.realmd.Service</refname>    <refpurpose>the realmd service</refpurpose>  </refnamediv>  <refsynopsisdiv role="synopsis">
+    <title role="synopsis.title">Methods</title>
+    <synopsis format="linespecific">
+<link linkend="gdbus-method-org-freedesktop-realmd-Service.Cancel">Cancel</link>    (IN  s operation);
+<link linkend="gdbus-method-org-freedesktop-realmd-Service.SetLocale">SetLocale</link> (IN  s locale);
+<link linkend="gdbus-method-org-freedesktop-realmd-Service.Release">Release</link>   ();
+</synopsis>
+  </refsynopsisdiv>
+  <refsect1 role="signal_proto">
+    <title role="signal_proto.title">Signals</title>
+    <synopsis format="linespecific">
+<link linkend="gdbus-signal-org-freedesktop-realmd-Service.Diagnostics">Diagnostics</link> (s data,
+             s operation);
+</synopsis>
+  </refsect1>
+<refsect1 role="desc" id="gdbus-interface-org-freedesktop-realmd-Service">
+  <title role="desc.title">Description</title>
+  <para>
+Global calls for managing the realmd service. Usually you'll want
+to use <link linkend="gdbus-interface-org-freedesktop-realmd-Provider.top_of_page">org.freedesktop.realmd.Provider</link> instead.
+</para><para>
+This interface is implemented by the realmd service, and is always
+available at the object path <literal moreinfo="none">/org/freedesktop/realmd</literal>
+</para><para>
+The service also implements the
+<literal moreinfo="none">org.freedesktop.DBus.ObjectManager</literal> interface which
+makes it easy to retrieve all realmd objects and properties in one go.
+</para>
+</refsect1>
+<refsect1 role="details" id="gdbus-methods-org.freedesktop.realmd.Service">
+  <title role="details.title">Method Details</title>
+<refsect2 role="method" id="gdbus-method-org-freedesktop-realmd-Service.Cancel">
+  <title>The Cancel() method</title>
+  <indexterm zone="gdbus-method-org-freedesktop-realmd-Service.Cancel" significance="normal"><primary sortas="Service.Cancel">org.freedesktop.realmd.Service.Cancel()</primary></indexterm>
+<programlisting format="linespecific">
+Cancel (IN  s operation);
+</programlisting>
+<para>
+Cancel a realmd operation. To be able to cancel an operation,
+pass a uniquely chosen <literal moreinfo="none">operation</literal> string
+identifier as an option in the method's <literal moreinfo="none">options</literal>
+argument.
+</para><para>
+These operation string identifiers should be unique per client
+calling the realmd service.
+</para><para>
+It is not guaranteed that the service can or will cancel the
+operation. For example, the operation may have already completed
+by the time this method is handled. The caller of the operation
+method will receive a
+<literal moreinfo="none">org.freedesktop.realmd.Error.Cancelled</literal>
+if the operation was cancelled.
+</para>
+<variablelist role="params">
+<varlistentry>
+  <term><literal moreinfo="none">IN s <parameter moreinfo="none">operation</parameter></literal>:</term>
+  <listitem><para>
+the operation to cancel
+</para></listitem>
+</varlistentry>
+</variablelist>
+</refsect2>
+<refsect2 role="method" id="gdbus-method-org-freedesktop-realmd-Service.SetLocale">
+  <title>The SetLocale() method</title>
+  <indexterm zone="gdbus-method-org-freedesktop-realmd-Service.SetLocale" significance="normal"><primary sortas="Service.SetLocale">org.freedesktop.realmd.Service.SetLocale()</primary></indexterm>
+<programlisting format="linespecific">
+SetLocale (IN  s locale);
+</programlisting>
+<para>
+Set the language <parameter moreinfo="none">locale</parameter> for the client. This locale is used
+for error messages. The locale is used until the next time
+this method is called, the client disconnects, or the client
+calls #<link linkend="gdbus-method-org-freedesktop-realmd-Service.Release">Release()</link>.
+</para>
+<variablelist role="params">
+<varlistentry>
+  <term><literal moreinfo="none">IN s <parameter moreinfo="none">locale</parameter></literal>:</term>
+  <listitem><para>
+the locale for the client
+</para></listitem>
+</varlistentry>
+</variablelist>
+</refsect2>
+<refsect2 role="method" id="gdbus-method-org-freedesktop-realmd-Service.Release">
+  <title>The Release() method</title>
+  <indexterm zone="gdbus-method-org-freedesktop-realmd-Service.Release" significance="normal"><primary sortas="Service.Release">org.freedesktop.realmd.Service.Release()</primary></indexterm>
+<programlisting format="linespecific">
+Release ();
+</programlisting>
+<para>
+Normally, realmd waits until all clients have disconnected
+before exiting itself sometime later. Long lived clients
+can call this method to allow the realmd service to quit.
+This is an optimization. The daemon will not exit immediately.
+It is safe to call this multiple times.
+</para>
+</refsect2>
+</refsect1>
+<refsect1 role="details" id="gdbus-signals-org.freedesktop.realmd.Service">
+  <title role="details.title">Signal Details</title>
+<refsect2 role="signal" id="gdbus-signal-org-freedesktop-realmd-Service.Diagnostics">
+  <title>The "Diagnostics" signal</title>
+  <indexterm zone="gdbus-signal-org-freedesktop-realmd-Service.Diagnostics" significance="normal"><primary sortas="Service::Diagnostics">org.freedesktop.realmd.Service::Diagnostics</primary></indexterm>
+<programlisting format="linespecific">
+Diagnostics (s data,
+             s operation);
+</programlisting>
+<para>
+This signal is fired when diagnostics result from an operation
+in the provider or one of its realms.
+</para><para>
+It is not guaranteed that this signal is emitted once per line.
+More than one line may be contained in <parameter moreinfo="none">data</parameter>, or a partial
+line. New line characters are embedded in <parameter moreinfo="none">data</parameter>.
+</para><para>
+This signal is sent explicitly to the client which invoked an
+operation method. In order to tell which operation this
+diagnostic data results from, pass a unique
+<literal moreinfo="none">operation</literal> string identifier in the
+<literal moreinfo="none">options</literal> argument of the operation method.
+That same identifier will be passed back via the <parameter moreinfo="none">operation</parameter>
+argument of this signal.
+</para>
+<variablelist role="params">
+<varlistentry>
+  <term><literal moreinfo="none">s <parameter moreinfo="none">data</parameter></literal>:</term>
+  <listitem><para>
+diagnostic data
+</para></listitem>
+</varlistentry>
+<varlistentry>
+  <term><literal moreinfo="none">s <parameter moreinfo="none">operation</parameter></literal>:</term>
+  <listitem><para>
+the operation this data resulted from
+</para></listitem>
+</varlistentry>
+</variablelist>
+</refsect2>
+</refsect1>
+</refentry>

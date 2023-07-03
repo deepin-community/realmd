@@ -1,0 +1,185 @@
+=====================================
+   realmd 0.17.1: ./test-suite.log
+=====================================
+
+# TOTAL: 101
+# PASS:  101
+# SKIP:  0
+# XFAIL: 0
+# FAIL:  0
+# XPASS: 0
+# ERROR: 0
+
+.. contents:: :depth: 2
+
+PASS: test-dn-util
+==================
+
+# ./build/tap-driver --test-name test-dn-util --log-file test-dn-util.log --trs-file test-dn-util.trs --color-tests no --enable-hard-errors yes --expect-failure no -- sh -c "$0" "$@" --tap ./test-dn-util
+# random seed: R02S5ab9374789b27fab52bc2a83518774fd
+1..29
+# Start of realmd tests
+# Start of samba-ou-format tests
+ok 1 /realmd/samba-ou-format/OU_One
+ok 2 /realmd/samba-ou-format/OU_One_ou_two
+ok 3 /realmd/samba-ou-format/Ou_One_Long_OU_two
+ok 4 /realmd/samba-ou-format/Ou_One_OU_two__ou_Three
+ok 5 /realmd/samba-ou-format/Ou_Test_Escape_Ou_Two
+ok 6 /realmd/samba-ou-format/Ou_Test__Escape_Ou_Two
+ok 7 /realmd/samba-ou-format/OU_One_DC_domain_dc_example_Dc_COM
+ok 8 /realmd/samba-ou-format/OU_One_OU_Two_Here_DC_domain_dc_example_Dc_COM
+ok 9 /realmd/samba-ou-format/OU_One_OU_Two_Here_DC_invalid_Dc_COM
+ok 10 /realmd/samba-ou-format/_
+ok 11 /realmd/samba-ou-format/_empty_
+ok 12 /realmd/samba-ou-format/OU
+ok 13 /realmd/samba-ou-format/OU_One_
+ok 14 /realmd/samba-ou-format/CN_Unsupported
+ok 15 /realmd/samba-ou-format/OU_One+CN_Unsupported
+ok 16 /realmd/samba-ou-format/DC_radi07__DC_segad__DC_lab__DC_sjc__DC_redhat__DC_com
+# End of samba-ou-format tests
+# Start of qualify-dn tests
+ok 17 /realmd/qualify-dn/OU_One
+ok 18 /realmd/qualify-dn/OU_One_ou_two
+ok 19 /realmd/qualify-dn/Ou_One_Long_OU_two
+ok 20 /realmd/qualify-dn/OU_One_DC_domain_dc_example_Dc_COM
+ok 21 /realmd/qualify-dn/OU_One_OU_Two_Here_DC_domain_dc_example_Dc_COM
+ok 22 /realmd/qualify-dn/OU_One_OU_Two_Here_DC_invalid_Dc_COM
+ok 23 /realmd/qualify-dn/_
+ok 24 /realmd/qualify-dn/_empty_
+ok 25 /realmd/qualify-dn/OU
+ok 26 /realmd/qualify-dn/OU_One_
+ok 27 /realmd/qualify-dn/CN_Test
+ok 28 /realmd/qualify-dn/OU_One+CN_Unsupported
+ok 29 /realmd/qualify-dn/DC_radi07__DC_segad__DC_lab__DC_sjc__DC_redhat__DC_com
+# End of qualify-dn tests
+# End of realmd tests
+
+PASS: test-ini-config
+=====================
+
+# ./build/tap-driver --test-name test-ini-config --log-file test-ini-config.log --trs-file test-ini-config.trs --color-tests no --enable-hard-errors yes --expect-failure no -- sh -c "$0" "$@" --tap ./test-ini-config
+# random seed: R02Se75bb491ab11b2cdfdabacbbff368c93
+# DEBUG: Loaded settings from: /home/ryanZzz/SRC/realmd-0.17.1/tests/files/realmd-defaults.conf /home/ryanZzz/SRC/realmd-0.17.1/tests/files/realmd-distro.conf /tmp/realmd-etc/realmd.conf
+1..27
+# Start of realmd tests
+# Start of ini-config tests
+ok 1 /realmd/ini-config/read-one
+ok 2 /realmd/ini-config/read-all
+ok 3 /realmd/ini-config/read-string
+ok 4 /realmd/ini-config/read-carriage-return
+ok 5 /realmd/ini-config/write-exact
+ok 6 /realmd/ini-config/write-file
+ok 7 /realmd/ini-config/write-empty-no-create
+ok 8 /realmd/ini-config/have
+ok 9 /realmd/ini-config/set
+ok 10 /realmd/ini-config/set-middle
+ok 11 /realmd/ini-config/set-and-get
+ok 12 /realmd/ini-config/set-section
+ok 13 /realmd/ini-config/set-all
+ok 14 /realmd/ini-config/get-sections
+ok 15 /realmd/ini-config/have-section
+ok 16 /realmd/ini-config/remove-section-first
+ok 17 /realmd/ini-config/remove-section-middle
+ok 18 /realmd/ini-config/remove-section-last
+ok 19 /realmd/ini-config/remove-section-all
+ok 20 /realmd/ini-config/remove-section-not-exist
+ok 21 /realmd/ini-config/file-not-exist
+ok 22 /realmd/ini-config/change
+ok 23 /realmd/ini-config/change-list
+ok 24 /realmd/ini-config/change-list-new
+ok 25 /realmd/ini-config/change-list-null-add
+ok 26 /realmd/ini-config/change-list-null-remove
+ok 27 /realmd/ini-config/get-boolean
+# End of ini-config tests
+# End of realmd tests
+
+PASS: test-sssd-config
+======================
+
+# ./build/tap-driver --test-name test-sssd-config --log-file test-sssd-config.log --trs-file test-sssd-config.trs --color-tests no --enable-hard-errors yes --expect-failure no -- sh -c "$0" "$@" --tap ./test-sssd-config
+# random seed: R02Sef566a84284ec0ec4d4c0268bae9dc87
+# DEBUG: Loaded settings from: /home/ryanZzz/SRC/realmd-0.17.1/tests/files/realmd-defaults.conf /home/ryanZzz/SRC/realmd-0.17.1/tests/files/realmd-distro.conf /tmp/realmd-etc/realmd.conf
+1..12
+# Start of realmd tests
+# Start of sssd-config tests
+ok 1 /realmd/sssd-config/get-domains
+ok 2 /realmd/sssd-config/domain-section
+ok 3 /realmd/sssd-config/have-domain
+ok 4 /realmd/sssd-config/add-domain
+ok 5 /realmd/sssd-config/add-domain-already
+ok 6 /realmd/sssd-config/add-domain-only
+ok 7 /realmd/sssd-config/update-domain
+ok 8 /realmd/sssd-config/update-domain-missing
+ok 9 /realmd/sssd-config/remove-domain
+ok 10 /realmd/sssd-config/remove-domain-not-exist
+ok 11 /realmd/sssd-config/remove-domain-only
+ok 12 /realmd/sssd-config/remove-and-add-domain
+# End of sssd-config tests
+# End of realmd tests
+
+PASS: test-safe-format
+======================
+
+# ./build/tap-driver --test-name test-safe-format --log-file test-safe-format.log --trs-file test-safe-format.trs --color-tests no --enable-hard-errors yes --expect-failure no -- sh -c "$0" "$@" --tap ./test-safe-format
+# random seed: R02Sd9516b7b3742146ba9c16e42001e6952
+1..19
+# Start of realmd tests
+ok 1 /realmd/safe-format-string
+# Start of safe-format tests
+ok 2 /realmd/safe-format/standard_string
+ok 3 /realmd/safe-format/empty_string
+ok 4 /realmd/safe-format/empty_format
+ok 5 /realmd/safe-format/right_aligned
+ok 6 /realmd/safe-format/left_aligned
+ok 7 /realmd/safe-format/width_right_aligned_space
+ok 8 /realmd/safe-format/width_left_aligned_space
+ok 9 /realmd/safe-format/precision_1_digit
+ok 10 /realmd/safe-format/precision_n_digits
+ok 11 /realmd/safe-format/precision_0_digits
+ok 12 /realmd/safe-format/multiple_simple_args
+ok 13 /realmd/safe-format/literal_percent
+ok 14 /realmd/safe-format/multiple_positional_args
+ok 15 /realmd/safe-format/skipping_arg
+ok 16 /realmd/safe-format/unsupported_conversion
+ok 17 /realmd/safe-format/bad_positional_arg
+ok 18 /realmd/safe-format/zero_positional_arg
+ok 19 /realmd/safe-format/too_many_args
+# End of safe-format tests
+# End of realmd tests
+
+PASS: test-login-name
+=====================
+
+# ./build/tap-driver --test-name test-login-name --log-file test-login-name.log --trs-file test-login-name.trs --color-tests no --enable-hard-errors yes --expect-failure no -- sh -c "$0" "$@" --tap ./test-login-name
+# random seed: R02Sff890d9ba895697c58f46ca0923e51ff
+1..11
+# Start of realmd tests
+# Start of login-name tests
+ok 1 /realmd/login-name/format_Domain_User
+ok 2 /realmd/login-name/format_prefix_User_suffix
+ok 3 /realmd/login-name/format_user_domain
+ok 4 /realmd/login-name/parse_Domain_User
+ok 5 /realmd/login-name/parse_prefix_User_suffix
+ok 6 /realmd/login-name/parse_user_domain
+ok 7 /realmd/login-name/parse_Another_User
+ok 8 /realmd/login-name/parse_different_User_suffix
+ok 9 /realmd/login-name/parse_user_another
+ok 10 /realmd/login-name/parse-all
+ok 11 /realmd/login-name/parse-all-failed
+# End of login-name tests
+# End of realmd tests
+
+PASS: test-settings
+===================
+
+# ./build/tap-driver --test-name test-settings --log-file test-settings.log --trs-file test-settings.trs --color-tests no --enable-hard-errors yes --expect-failure no -- sh -c "$0" "$@" --tap ./test-settings
+# random seed: R02S768a3f9fa25e98957bb161b76e5deb74
+1..3
+# Start of realmd tests
+# Start of settings tests
+ok 1 /realmd/settings/string
+ok 2 /realmd/settings/double
+ok 3 /realmd/settings/boolean
+# End of settings tests
+# End of realmd tests
+

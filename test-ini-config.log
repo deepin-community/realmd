@@ -1,0 +1,35 @@
+# ./build/tap-driver --test-name test-ini-config --log-file test-ini-config.log --trs-file test-ini-config.trs --color-tests no --enable-hard-errors yes --expect-failure no -- sh -c "$0" "$@" --tap ./test-ini-config
+# random seed: R02Se75bb491ab11b2cdfdabacbbff368c93
+# DEBUG: Loaded settings from: /home/ryanZzz/SRC/realmd-0.17.1/tests/files/realmd-defaults.conf /home/ryanZzz/SRC/realmd-0.17.1/tests/files/realmd-distro.conf /tmp/realmd-etc/realmd.conf
+1..27
+# Start of realmd tests
+# Start of ini-config tests
+ok 1 /realmd/ini-config/read-one
+ok 2 /realmd/ini-config/read-all
+ok 3 /realmd/ini-config/read-string
+ok 4 /realmd/ini-config/read-carriage-return
+ok 5 /realmd/ini-config/write-exact
+ok 6 /realmd/ini-config/write-file
+ok 7 /realmd/ini-config/write-empty-no-create
+ok 8 /realmd/ini-config/have
+ok 9 /realmd/ini-config/set
+ok 10 /realmd/ini-config/set-middle
+ok 11 /realmd/ini-config/set-and-get
+ok 12 /realmd/ini-config/set-section
+ok 13 /realmd/ini-config/set-all
+ok 14 /realmd/ini-config/get-sections
+ok 15 /realmd/ini-config/have-section
+ok 16 /realmd/ini-config/remove-section-first
+ok 17 /realmd/ini-config/remove-section-middle
+ok 18 /realmd/ini-config/remove-section-last
+ok 19 /realmd/ini-config/remove-section-all
+ok 20 /realmd/ini-config/remove-section-not-exist
+ok 21 /realmd/ini-config/file-not-exist
+ok 22 /realmd/ini-config/change
+ok 23 /realmd/ini-config/change-list
+ok 24 /realmd/ini-config/change-list-new
+ok 25 /realmd/ini-config/change-list-null-add
+ok 26 /realmd/ini-config/change-list-null-remove
+ok 27 /realmd/ini-config/get-boolean
+# End of ini-config tests
+# End of realmd tests

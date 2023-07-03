@@ -1,0 +1,377 @@
+<?xml version="1.0"?>
+<refentry id="gdbus-org.freedesktop.realmd.Realm">
+  <refmeta>    <refentrytitle role="top_of_page" id="gdbus-interface-org-freedesktop-realmd-Realm.top_of_page">org.freedesktop.realmd.Realm</refentrytitle>
+  <indexterm zone="gdbus-interface-org-freedesktop-realmd-Realm.top_of_page" significance="normal"><primary sortas="Realm">org.freedesktop.realmd.Realm</primary></indexterm>
+  </refmeta>  <refnamediv>    <refname>org.freedesktop.realmd.Realm</refname>    <refpurpose>a realm</refpurpose>  </refnamediv>  <refsynopsisdiv role="synopsis">
+    <title role="synopsis.title">Methods</title>
+    <synopsis format="linespecific">
+<link linkend="gdbus-method-org-freedesktop-realmd-Realm.Deconfigure">Deconfigure</link>       (IN  a{sv} options);
+<link linkend="gdbus-method-org-freedesktop-realmd-Realm.ChangeLoginPolicy">ChangeLoginPolicy</link> (IN  s     login_policy,
+                   IN  as    permitted_add,
+                   IN  as    permitted_remove,
+                   IN  a{sv} options);
+</synopsis>
+  </refsynopsisdiv>
+  <refsect1 role="properties">
+    <title role="properties.title">Properties</title>
+    <synopsis format="linespecific">
+<link linkend="gdbus-property-org-freedesktop-realmd-Realm.Name">Name</link>                 readable   s
+<link linkend="gdbus-property-org-freedesktop-realmd-Realm.Configured">Configured</link>           readable   s
+<link linkend="gdbus-property-org-freedesktop-realmd-Realm.SupportedInterfaces">SupportedInterfaces</link>  readable   as
+<link linkend="gdbus-property-org-freedesktop-realmd-Realm.Details">Details</link>              readable   a(ss)
+<link linkend="gdbus-property-org-freedesktop-realmd-Realm.RequiredPackages">RequiredPackages</link>     readable   as
+<link linkend="gdbus-property-org-freedesktop-realmd-Realm.LoginFormats">LoginFormats</link>         readable   as
+<link linkend="gdbus-property-org-freedesktop-realmd-Realm.LoginPolicy">LoginPolicy</link>          readable   s
+<link linkend="gdbus-property-org-freedesktop-realmd-Realm.PermittedLogins">PermittedLogins</link>      readable   as
+<link linkend="gdbus-property-org-freedesktop-realmd-Realm.PermittedGroups">PermittedGroups</link>      readable   as
+</synopsis>
+  </refsect1>
+<refsect1 role="desc" id="gdbus-interface-org-freedesktop-realmd-Realm">
+  <title role="desc.title">Description</title>
+  <para>
+Represents one realm.
+</para><para>
+Contains generic information about a realm, and useful properties for
+introspecting what kind of realm this is and how to work with
+the realm.
+</para><para>
+Use <link linkend="gdbus-property-org-freedesktop-realmd-Provider.Realms">"Realms"</link> or
+#<link linkend="gdbus-method-org-freedesktop-realmd-Provider.Discover">Discover()</link> to get access to some
+kerberos realm objects.
+</para><para>
+Realms will always implement additional interfaces, such as
+<link linkend="gdbus-interface-org-freedesktop-realmd-Kerberos.top_of_page">org.freedesktop.realmd.Kerberos</link>.  Do not assume that all realms
+implement that kerberos interface. Use the
+<link linkend="gdbus-property-org-freedesktop-realmd-Realm.SupportedInterfaces">"SupportedInterfaces"</link> property to see
+which interfaces are supported.
+</para><para>
+Different realms support various ways to configure them on the
+system. Use the <link linkend="gdbus-property-org-freedesktop-realmd-Realm.Configured">"Configured"</link> property
+to determine if a realm is configured. If it is configured, the
+property will be set to the interface of the mechanism that was
+used to configure it.
+</para><para>
+To configure a realm, look in the
+<link linkend="gdbus-property-org-freedesktop-realmd-Realm.SupportedInterfaces">"SupportedInterfaces"</link> property for a
+recognized purpose-specific interface that can be used for
+configuration, such as the
+<link linkend="gdbus-interface-org-freedesktop-realmd-KerberosMembership.top_of_page">org.freedesktop.realmd.KerberosMembership</link> interface and its
+#<link linkend="gdbus-method-org-freedesktop-realmd-KerberosMembership.Join">Join()</link> method.
+</para><para>
+To deconfigure a realm from the current system, you can use the
+#<link linkend="gdbus-method-org-freedesktop-realmd-Realm.Deconfigure">Deconfigure()</link> method. In addition, some
+of the configuration specific interfaces provide methods to
+deconfigure a realm in a specific way, such as the
+#<link linkend="gdbus-method-org-freedesktop-realmd-KerberosMembership.Leave">Leave()</link> method.
+</para><para>
+The various properties are guaranteed to have been updated before
+the operation methods return, if they change state.
+</para>
+</refsect1>
+<refsect1 role="details" id="gdbus-methods-org.freedesktop.realmd.Realm">
+  <title role="details.title">Method Details</title>
+<refsect2 role="method" id="gdbus-method-org-freedesktop-realmd-Realm.Deconfigure">
+  <title>The Deconfigure() method</title>
+  <indexterm zone="gdbus-method-org-freedesktop-realmd-Realm.Deconfigure" significance="normal"><primary sortas="Realm.Deconfigure">org.freedesktop.realmd.Realm.Deconfigure()</primary></indexterm>
+<programlisting format="linespecific">
+Deconfigure (IN  a{sv} options);
+</programlisting>
+<para>
+deconfigure this realm
+Deconfigure this realm from the local machine with standard
+default behavior.
+</para><para>
+The behavior of this method depends on the which configuration
+interface is present in the
+<link linkend="gdbus-interface-org-freedesktop-realmd-Realm.top_of_page">org.freedesktop.realmd.Realm</link>.Configured property. It does not
+always delete membership accounts in the realm, but just
+reconfigures the local machine so it no longer is configured
+for the given realm. In some cases the implementation may try
+to update membership accounts, but this is not guaranteed.
+</para><para>
+Various configuration interfaces may support more specific ways
+to deconfigure a realm in a specific way, such as the
+#<link linkend="gdbus-method-org-freedesktop-realmd-KerberosMembership.Leave">Leave()</link> method.
+</para><para>
+<parameter moreinfo="none">options</parameter> can contain, but is not limited to, the following values:
+<itemizedlist>
+<listitem><para><literal moreinfo="none">operation</literal>: a string
+identifier chosen by the client, which can then later be
+passed to <link linkend="gdbus-method-org-freedesktop-realmd-Service.Cancel">Cancel()</link> in order
+to cancel the operation</para></listitem>
+</itemizedlist>
+</para><para>
+This method requires authorization for the PolicyKit action
+called <literal moreinfo="none">org.freedesktop.realmd.deconfigure-realm</literal>.
+</para><para>
+In addition to common DBus error results, this method may return:
+<itemizedlist>
+<listitem><para><literal moreinfo="none">org.freedesktop.realmd.Error.Failed</literal>:
+may be returned if the deconfigure failed for a generic reason.</para></listitem>
+<listitem><para><literal moreinfo="none">org.freedesktop.realmd.Error.Cancelled</literal>:
+returned if the operation was cancelled.</para></listitem>
+<listitem><para><literal moreinfo="none">org.freedesktop.realmd.Error.NotAuthorized</literal>:
+returned if the calling client is not permitted to deconfigure a
+realm.</para></listitem>
+<listitem><para><literal moreinfo="none">org.freedesktop.realmd.Error.NotConfigured</literal>:
+returned if this realm is not configured on the machine.</para></listitem>
+<listitem><para><literal moreinfo="none">org.freedesktop.realmd.Error.Busy</literal>:
+returned if the service is currently performing another operation like
+join or leave.</para></listitem>
+</itemizedlist>
+</para>
+<variablelist role="params">
+<varlistentry>
+  <term><literal moreinfo="none">IN a{sv} <parameter moreinfo="none">options</parameter></literal>:</term>
+  <listitem><para>
+</para><para>
+</para></listitem>
+</varlistentry>
+</variablelist>
+</refsect2>
+<refsect2 role="method" id="gdbus-method-org-freedesktop-realmd-Realm.ChangeLoginPolicy">
+  <title>The ChangeLoginPolicy() method</title>
+  <indexterm zone="gdbus-method-org-freedesktop-realmd-Realm.ChangeLoginPolicy" significance="normal"><primary sortas="Realm.ChangeLoginPolicy">org.freedesktop.realmd.Realm.ChangeLoginPolicy()</primary></indexterm>
+<programlisting format="linespecific">
+ChangeLoginPolicy (IN  s     login_policy,
+                   IN  as    permitted_add,
+                   IN  as    permitted_remove,
+                   IN  a{sv} options);
+</programlisting>
+<para>
+Change the login policy and/or permitted logins for this realm.
+</para><para>
+Not all realms support all the various login policies. An
+error will be returned if the new login policy is not supported.
+You may specify an empty string for the <parameter moreinfo="none">login_policy</parameter> argument
+which will cause no change in the policy itself. If the policy
+is changed, it will be reflected in the
+<link linkend="gdbus-property-org-freedesktop-realmd-Realm.LoginPolicy">"LoginPolicy"</link> property.
+</para><para>
+The <parameter moreinfo="none">permitted_add</parameter> and <parameter moreinfo="none">permitted_remove</parameter> arguments represent
+lists of login names that should be added and removed from
+the <link linkend="gdbus-interface-org-freedesktop-realmd-Kerberos.top_of_page">org.freedesktop.realmd.Kerberos</link>:PermittedLogins property.
+</para><para>
+<parameter moreinfo="none">options</parameter> can contain, but is not limited to, the following values:
+<itemizedlist>
+<listitem><para><literal moreinfo="none">operation</literal>: a string
+identifier chosen by the client, which can then later be
+passed to <link linkend="gdbus-method-org-freedesktop-realmd-Service.Cancel">Cancel()</link> in order
+to cancel the operation</para></listitem>
+<listitem><para><literal moreinfo="none">groups</literal>: boolean which if
+set to <literal moreinfo="none">TRUE</literal> means that the names in
+<parameter moreinfo="none">permitted_add</parameter> and <parameter moreinfo="none">permitted_remove</parameter> are group names instead
+of login names.</para></listitem>
+</itemizedlist>
+</para><para>
+This method requires authorization for the PolicyKit action
+called <literal moreinfo="none">org.freedesktop.realmd.login-policy</literal>.
+</para><para>
+In addition to common DBus error results, this method may return:
+<itemizedlist>
+<listitem><para><literal moreinfo="none">org.freedesktop.realmd.Error.Failed</literal>:
+may be returned if the policy change failed for a generic reason.</para></listitem>
+<listitem><para><literal moreinfo="none">org.freedesktop.realmd.Error.Cancelled</literal>:
+returned if the operation was cancelled.</para></listitem>
+<listitem><para><literal moreinfo="none">org.freedesktop.realmd.Error.NotAuthorized</literal>:
+returned if the calling client is not permitted to change login policy
+operation.</para></listitem>
+<listitem><para><literal moreinfo="none">org.freedesktop.realmd.Error.NotConfigured</literal>:
+returned if the realm is not configured.</para></listitem>
+<listitem><para><literal moreinfo="none">org.freedesktop.realmd.Error.Busy</literal>:
+returned if the service is currently performing another operation like
+join or leave.</para></listitem>
+</itemizedlist>
+</para>
+<variablelist role="params">
+<varlistentry>
+  <term><literal moreinfo="none">IN s <parameter moreinfo="none">login_policy</parameter></literal>:</term>
+  <listitem><para>
+the new login policy, or an empty string
+</para></listitem>
+</varlistentry>
+<varlistentry>
+  <term><literal moreinfo="none">IN as <parameter moreinfo="none">permitted_add</parameter></literal>:</term>
+  <listitem><para>
+a list of logins to permit
+</para></listitem>
+</varlistentry>
+<varlistentry>
+  <term><literal moreinfo="none">IN as <parameter moreinfo="none">permitted_remove</parameter></literal>:</term>
+  <listitem><para>
+a list of logins to not permit
+</para></listitem>
+</varlistentry>
+<varlistentry>
+  <term><literal moreinfo="none">IN a{sv} <parameter moreinfo="none">options</parameter></literal>:</term>
+  <listitem><para>
+options for this operation
+</para></listitem>
+</varlistentry>
+</variablelist>
+</refsect2>
+</refsect1>
+<refsect1 role="details" id="gdbus-properties-org.freedesktop.realmd.Realm">
+  <title role="details.title">Property Details</title>
+<refsect2 role="property" id="gdbus-property-org-freedesktop-realmd-Realm.Name">
+  <title>The "Name" property</title>
+  <indexterm zone="gdbus-property-org-freedesktop-realmd-Realm.Name" significance="normal"><primary sortas="Realm:Name">org.freedesktop.realmd.Realm:Name</primary></indexterm>
+<programlisting format="linespecific">
+Name  readable   s
+</programlisting>
+<para>
+the realm name
+This is the name of the realm, appropriate for display to
+end users where necessary.
+</para>
+</refsect2>
+<refsect2 role="property" id="gdbus-property-org-freedesktop-realmd-Realm.Configured">
+  <title>The "Configured" property</title>
+  <indexterm zone="gdbus-property-org-freedesktop-realmd-Realm.Configured" significance="normal"><primary sortas="Realm:Configured">org.freedesktop.realmd.Realm:Configured</primary></indexterm>
+<programlisting format="linespecific">
+Configured  readable   s
+</programlisting>
+<para>
+whether this domain is configured and how
+If this property is an empty string, then the realm is not
+configured. Otherwise the realm is configured, and contains
+a string which is the interface that represents how it was
+configured, for example <link linkend="gdbus-interface-org-freedesktop-realmd-KerberosMembership.top_of_page">org.freedesktop.realmd.KerberosMembership</link>.
+</para>
+</refsect2>
+<refsect2 role="property" id="gdbus-property-org-freedesktop-realmd-Realm.SupportedInterfaces">
+  <title>The "SupportedInterfaces" property</title>
+  <indexterm zone="gdbus-property-org-freedesktop-realmd-Realm.SupportedInterfaces" significance="normal"><primary sortas="Realm:SupportedInterfaces">org.freedesktop.realmd.Realm:SupportedInterfaces</primary></indexterm>
+<programlisting format="linespecific">
+SupportedInterfaces  readable   as
+</programlisting>
+<para>
+Additional supported interfaces of this realm. This includes
+interfaces that contain more information about the realm,
+such as <link linkend="gdbus-interface-org-freedesktop-realmd-Kerberos.top_of_page">org.freedesktop.realmd.Kerberos</link> and interfaces
+which contain methods for configuring a realm, such as
+<link linkend="gdbus-interface-org-freedesktop-realmd-KerberosMembership.top_of_page">org.freedesktop.realmd.KerberosMembership</link>.
+</para>
+</refsect2>
+<refsect2 role="property" id="gdbus-property-org-freedesktop-realmd-Realm.Details">
+  <title>The "Details" property</title>
+  <indexterm zone="gdbus-property-org-freedesktop-realmd-Realm.Details" significance="normal"><primary sortas="Realm:Details">org.freedesktop.realmd.Realm:Details</primary></indexterm>
+<programlisting format="linespecific">
+Details  readable   a(ss)
+</programlisting>
+<para>
+informational details about the realm
+Informational details about the realm. The following values
+should be present:
+<itemizedlist>
+<listitem><para><literal moreinfo="none">server-software</literal>:
+identifier of the software running on the server (e.g.
+<literal moreinfo="none">active-directory</literal>).</para></listitem>
+<listitem><para><literal moreinfo="none">client-software</literal>:
+identifier of the software running on the client (e.g.
+<literal moreinfo="none">sssd</literal>).</para></listitem>
+</itemizedlist>
+</para>
+</refsect2>
+<refsect2 role="property" id="gdbus-property-org-freedesktop-realmd-Realm.RequiredPackages">
+  <title>The "RequiredPackages" property</title>
+  <indexterm zone="gdbus-property-org-freedesktop-realmd-Realm.RequiredPackages" significance="normal"><primary sortas="Realm:RequiredPackages">org.freedesktop.realmd.Realm:RequiredPackages</primary></indexterm>
+<programlisting format="linespecific">
+RequiredPackages  readable   as
+</programlisting>
+<para>
+prerequisite software
+Software packages that are required in order for a join to
+succeed. These are either simple strings like <literal moreinfo="none">sssd</literal>,
+or strings with an operator and version number like
+<literal moreinfo="none">sssd &gt;= 1.9.0</literal>
+</para><para>
+These values are specific to the packaging system that is
+being run.
+</para>
+</refsect2>
+<refsect2 role="property" id="gdbus-property-org-freedesktop-realmd-Realm.LoginFormats">
+  <title>The "LoginFormats" property</title>
+  <indexterm zone="gdbus-property-org-freedesktop-realmd-Realm.LoginFormats" significance="normal"><primary sortas="Realm:LoginFormats">org.freedesktop.realmd.Realm:LoginFormats</primary></indexterm>
+<programlisting format="linespecific">
+LoginFormats  readable   as
+</programlisting>
+<para>
+supported formats for login names
+Supported formats for login to this realm. This is only
+relevant once the realm has been enrolled. The formats
+will contain a <literal moreinfo="none"><constant>U</constant></literal> in the string, which
+indicate where the user name should be placed. The formats
+may contain a <literal moreinfo="none"><constant>D</constant></literal> in the string which
+indicate where a domain name should be placed.
+</para><para>
+The first format in the list is the preferred format for
+login names.
+</para>
+</refsect2>
+<refsect2 role="property" id="gdbus-property-org-freedesktop-realmd-Realm.LoginPolicy">
+  <title>The "LoginPolicy" property</title>
+  <indexterm zone="gdbus-property-org-freedesktop-realmd-Realm.LoginPolicy" significance="normal"><primary sortas="Realm:LoginPolicy">org.freedesktop.realmd.Realm:LoginPolicy</primary></indexterm>
+<programlisting format="linespecific">
+LoginPolicy  readable   s
+</programlisting>
+<para>
+the policy for logins using this realm
+The policy for logging into this computer using this realm.
+</para><para>
+The policy can be changed using the
+#<link linkend="gdbus-method-org-freedesktop-realmd-Realm.ChangeLoginPolicy">ChangeLoginPolicy()</link> method.
+</para><para>
+The following policies are predefined. Not all providers
+support all these policies and there may be provider specific
+policies or multiple policies represented in the string:
+<itemizedlist>
+<listitem><para><literal moreinfo="none">allow-any-login</literal>: allow
+login by any authenticated user present in this
+realm.</para></listitem>
+<listitem><para><literal moreinfo="none">allow-realm-logins</literal>: allow
+logins according to the realm or domain policy for logins
+on this machine. This usually defaults to allowing any realm
+user to log in.</para></listitem>
+<listitem><para><literal moreinfo="none">allow-permitted-logins</literal>:
+only allow the logins permitted in the
+<link linkend="gdbus-property-org-freedesktop-realmd-Realm.PermittedLogins">"PermittedLogins"</link>
+property.</para></listitem>
+<listitem><para><literal moreinfo="none">deny-any-login</literal>:
+don't allow any logins via authenticated users of this
+realm.</para></listitem>
+</itemizedlist>
+</para>
+</refsect2>
+<refsect2 role="property" id="gdbus-property-org-freedesktop-realmd-Realm.PermittedLogins">
+  <title>The "PermittedLogins" property</title>
+  <indexterm zone="gdbus-property-org-freedesktop-realmd-Realm.PermittedLogins" significance="normal"><primary sortas="Realm:PermittedLogins">org.freedesktop.realmd.Realm:PermittedLogins</primary></indexterm>
+<programlisting format="linespecific">
+PermittedLogins  readable   as
+</programlisting>
+<para>
+the permitted login names
+The list of permitted authenticated users allowed to login
+into this computer. This is only relevant if the
+<link linkend="gdbus-property-org-freedesktop-realmd-Realm.LoginPolicy">"LoginPolicy"</link> property
+contains the <literal moreinfo="none">allow-permitted-logins</literal>
+string.
+</para>
+</refsect2>
+<refsect2 role="property" id="gdbus-property-org-freedesktop-realmd-Realm.PermittedGroups">
+  <title>The "PermittedGroups" property</title>
+  <indexterm zone="gdbus-property-org-freedesktop-realmd-Realm.PermittedGroups" significance="normal"><primary sortas="Realm:PermittedGroups">org.freedesktop.realmd.Realm:PermittedGroups</primary></indexterm>
+<programlisting format="linespecific">
+PermittedGroups  readable   as
+</programlisting>
+<para>
+the permitted group names
+The list of groups which users need to be in to be allowed
+to log into this computer. This is only relevant if the
+<link linkend="gdbus-property-org-freedesktop-realmd-Realm.LoginPolicy">"LoginPolicy"</link> property
+contains the <literal moreinfo="none">allow-permitted-logins</literal>
+string.
+</para>
+</refsect2>
+</refsect1>
+</refentry>

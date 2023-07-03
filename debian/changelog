@@ -1,5 +1,193 @@
-template-repository (1.0-1) unstable; urgency=medium
+realmd (0.17.1-2) unstable; urgency=medium
 
-  * Initial release
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+  * release in the deepin-community
+ -- RyanBq <ryanbqzhao@gmail.com>  Thu, 29 Jun 2023 16:11:15 +0800
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+realmd (0.17.1-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 0.17.1
+  * Rebase patches
+  * Replace Build-Depends on intltool with gettext.
+    Add polkitd to Build-Depends as its .loc and .its files are required
+    when generating the translations of the policy files.
+  * Bump Standards-Version to 4.6.1
+  * Recommend polkitd instead of the transitional policykit-1
+    (Closes: #1025585)
+  * Fix mismatched lintian override
+
+ -- Michael Biebl <biebl@debian.org>  Wed, 07 Dec 2022 18:34:32 +0100
+
+realmd (0.17.0-2) unstable; urgency=medium
+
+  * Team upload
+
+  [ Andreas Hasenack ]
+  * d/p/03_ldap-discovery-socket-timeout.patch: use a shorter timeout
+    for the unbind request sent when finishing up the discovery phase
+  * d/p/04_add-computer-name-to-manpage.patch: document the existing
+    --computer-name command line option
+  * d/p/05_dont-add-services-line.patch: in Ubuntu and Debian, the sssd_*
+    services are socket activated and don't need a "services" line in
+    sssd.conf (LP #1880157) (Closes: #1003620)
+  * d/p/06_samba_415_update.patch, d/rules: update for net ads join
+    command from samba 4.15 (LP: #1961443)
+
+  [ Jeremy Bicha ]
+  * Build-Depend on debhelper-compat 13
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Fri, 17 Jun 2022 13:33:21 -0400
+
+realmd (0.17.0-1) unstable; urgency=medium
+
+  * debian/watch: Update the URL and point to the git releases
+  * New upstream version 0.17.0
+  * Drop patches that have been merged upstream
+  * debian/control: Bump Standards-Version to 4.5.1 (no further changes)
+  * debian/links: Add a link from the documentation to gtk-doc directory
+
+ -- Laurent Bigonville <bigon@debian.org>  Mon, 16 Aug 2021 15:35:48 +0200
+
+realmd (0.16.3-3) unstable; urgency=medium
+
+  [ Andreas Henriksson ]
+  * Switch to using python3 during build (Closes: #938339)
+  * Cherry-pick patch from upstream to fix test failure (Closes: #935294)
+
+  [ Laurent Bigonville ]
+  * Fix FTBFS with glib 2.62 (patch from upstream) (Closes: #940159)
+  * debian/control: Bump Standards-Version to 4.4.1 (no further changes)
+  * Bump debhelper compatibility to 12
+
+ -- Laurent Bigonville <bigon@debian.org>  Wed, 02 Oct 2019 17:26:19 +0200
+
+realmd (0.16.3-2) unstable; urgency=medium
+
+  * Team upload.
+  * debian/copyright: Use https URLs
+  * Move Vcs-* URLs to salsa
+  * Bump to debhelper compat level 10.
+    This automatically updates config.{guess,sub} on build. Drop the
+    explicit dh-autoreconf, it also happens by default now.
+  * Drop empty realmd-docs.proc file.
+    Spotted by lintian.
+  * Use target arch pkg-config to fix cross compilation.
+    Thanks Helmut Grohne! Also spotted by lintian.
+  * Build-depend on python:any.
+    This eases cross-compilation and bootstrapping. Thanks Helmut Grohne!
+    (Closes: #862213)
+  * Add Recommends: policykit-1.
+    Many operations are guarded by polkit and fail without it.
+    (Closes: #856243)
+  * Bump Standards-Version to 4.1.4
+
+ -- Martin Pitt <mpitt@debian.org>  Tue, 01 May 2018 06:51:22 +0000
+
+realmd (0.16.3-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Drop debian/patches/02_fix_ftbfs_glib_2.45.7.patch, applied upstream
+  * debian/watch, debian/upstream/signing-key.asc: Verify the upstream
+    signature and bump the compatibily version to 4
+  * debian/control: Bump Standards-Version to 3.9.8 (no further changes)
+  * debian/control: Use https:// instead of http://
+  * debian/rules: Enable all hardening flags
+  * debian/lintian-overrides: Override systemd-service-file-missing-install-key
+
+ -- Laurent Bigonville <bigon@debian.org>  Mon, 15 Aug 2016 13:17:15 +0200
+
+realmd (0.16.2-2) unstable; urgency=medium
+
+  * debian/patches/01_freeipa_section.patch: Fix a crash by adding an empty
+    [ipa-packages] section (Closes: #807384)
+  * debian/patches/02_fix_ftbfs_glib_2.45.7.patch: Fix FTBFS with glib 2.45.7
+    (Closes: #800928)
+
+ -- Laurent Bigonville <bigon@debian.org>  Fri, 25 Dec 2015 21:25:41 +0100
+
+realmd (0.16.2-1) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Laurent Bigonville ]
+  * debian/rules: Install the NEWS file as upstream changelog file
+
+  [ Michael Biebl ]
+  * New upstream release.
+
+ -- Michael Biebl <biebl@debian.org>  Fri, 04 Sep 2015 18:47:33 +0200
+
+realmd (0.16.1-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream release.
+  * Drop debian/patches/0001-Add-support-for-libsystemd.patch, merged
+    upstream.
+
+ -- Michael Biebl <biebl@debian.org>  Wed, 15 Jul 2015 02:55:33 +0200
+
+realmd (0.16.0-1) unstable; urgency=medium
+
+  * Team upload.
+  * New uptream release.
+    - Strictly validate info destined for config files and don't try to do
+      AD joins without authentication unless explicitly requested.
+      (Closes: #781179)
+  * Drop Build-Depends on libpackagekit-glib2-dev since PackageKit is used
+    directly via its D-Bus interface now.
+  * Build against libsystemd. (Closes: #779774)
+  * Use dh-autoreconf to update the build system.
+  * Bump Standards-Version to 3.9.6.
+  * Fix license names in debian/copyright to comply with the machine-readable
+    copyright spec 1.0.
+
+ -- Michael Biebl <biebl@debian.org>  Tue, 19 May 2015 15:17:53 +0200
+
+realmd (0.15.1-1) unstable; urgency=medium
+
+  * New upstream release
+    - Fix crash if full_name_format is missing in sssd.conf (LP: #1325463)
+  * debian/control: Bump libglib2.0-dev to >= 2.39.1. This is allowing to
+    avoid a bug in gdbus-codegen (Closes: #743296)
+
+ -- Laurent Bigonville <bigon@debian.org>  Mon, 02 Jun 2014 21:51:05 +0200
+
+realmd (0.15.0-1) unstable; urgency=medium
+
+  * New upstream release
+    - Bump libglib2.0-dev build-dependency to 2.36.0
+    - Drop debian/patches/fix-ftbfs-kfreebsd.patch: Applied upstream
+  * Bump Standards-Version to 3.9.5 (no further changes)
+
+ -- Laurent Bigonville <bigon@debian.org>  Sat, 01 Mar 2014 20:18:17 +0100
+
+realmd (0.14.6-2) unstable; urgency=low
+
+  * debian/rules: Explicitly disable systemd on !linux architectures
+  * debian/patches/fix-ftbfs-kfreebsd.patch: Fix FTBFS on !linux architectures
+
+ -- Laurent Bigonville <bigon@debian.org>  Sat, 14 Sep 2013 13:59:24 +0200
+
+realmd (0.14.6-1) unstable; urgency=low
+
+  * New upstream release
+  * debian/control, debian/rules: Only build with systemd and journald support
+    on linux architectures
+
+ -- Laurent Bigonville <bigon@debian.org>  Sat, 14 Sep 2013 02:44:17 +0200
+
+realmd (0.14.5-1) experimental; urgency=low
+
+  * New upstream release
+    - Drop d/p/01-Dont-create-a-top-level-directory-in-var.patch: Applied
+      upstream
+
+ -- Laurent Bigonville <bigon@debian.org>  Mon, 19 Aug 2013 14:55:56 +0200
+
+realmd (0.14.2-1) experimental; urgency=low
+
+  * Initial release (Closes: #700213)
+
+ -- Laurent Bigonville <bigon@debian.org>  Fri, 19 Jul 2013 23:37:55 +0200
+
