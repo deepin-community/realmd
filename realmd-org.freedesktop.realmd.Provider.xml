@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<refentry id="gdbus-org.freedesktop.realmd.Provider">
+  <refmeta>    <refentrytitle role="top_of_page" id="gdbus-interface-org-freedesktop-realmd-Provider.top_of_page">org.freedesktop.realmd.Provider</refentrytitle>
+  <indexterm zone="gdbus-interface-org-freedesktop-realmd-Provider.top_of_page" significance="normal"><primary sortas="Provider">org.freedesktop.realmd.Provider</primary></indexterm>
+  </refmeta>  <refnamediv>    <refname>org.freedesktop.realmd.Provider</refname>    <refpurpose>a realm provider</refpurpose>  </refnamediv>  <refsynopsisdiv role="synopsis">
+    <title role="synopsis.title">Methods</title>
+    <synopsis format="linespecific">
+<link linkend="gdbus-method-org-freedesktop-realmd-Provider.Discover">Discover</link> (IN  s     string,
+          IN  a{sv} options,
+          OUT i     relevance,
+          OUT ao    realm);
+</synopsis>
+  </refsynopsisdiv>
+  <refsect1 role="properties">
+    <title role="properties.title">Properties</title>
+    <synopsis format="linespecific">
+<link linkend="gdbus-property-org-freedesktop-realmd-Provider.Name">Name</link>     readable   s
+<link linkend="gdbus-property-org-freedesktop-realmd-Provider.Version">Version</link>  readable   s
+<link linkend="gdbus-property-org-freedesktop-realmd-Provider.Realms">Realms</link>   readable   ao
+</synopsis>
+  </refsect1>
+<refsect1 role="desc" id="gdbus-interface-org-freedesktop-realmd-Provider">
+  <title role="desc.title">Description</title>
+  <para>
+Various realm providers represent different software implementations
+that provide access to realms or domains.
+</para><para>
+This interface is implemented by individual providers, but is
+aggregated globally at the system bus name
+<literal moreinfo="none">org.freedesktop.realmd</literal>
+with the object path <literal moreinfo="none">/org/freedesktop/realmd</literal>
+</para>
+</refsect1>
+<refsect1 role="details" id="gdbus-methods-org.freedesktop.realmd.Provider">
+  <title role="details.title">Method Details</title>
+<refsect2 role="method" id="gdbus-method-org-freedesktop-realmd-Provider.Discover">
+  <title>The Discover() method</title>
+  <indexterm zone="gdbus-method-org-freedesktop-realmd-Provider.Discover" significance="normal"><primary sortas="Provider.Discover">org.freedesktop.realmd.Provider.Discover()</primary></indexterm>
+<programlisting format="linespecific">
+Discover (IN  s     string,
+          IN  a{sv} options,
+          OUT i     relevance,
+          OUT ao    realm);
+</programlisting>
+<para>
+Discover realms for the given string. The input <parameter moreinfo="none">string</parameter> is
+usually a domain or realm name, perhaps typed by a user. If
+an empty string is provided, the realm provider should try to
+discover a default realm, if possible (e.g. from DHCP).
+</para><para>
+<parameter moreinfo="none">options</parameter> can contain, but is not limited to, the following values:
+<itemizedlist>
+<listitem><para><literal moreinfo="none">operation</literal>: a string
+identifier chosen by the client, which can then later be
+passed to <link linkend="gdbus-method-org-freedesktop-realmd-Service.Cancel">Cancel()</link> in order
+to cancel the operation</para></listitem>
+<listitem><para><literal moreinfo="none">client-software</literal>: a string
+containing the client software identifier that the returned
+realms should match.</para></listitem>
+<listitem><para><literal moreinfo="none">server-software</literal>: a string
+containing the client software identifier that the returned
+realms should match.</para></listitem>
+<listitem><para><literal moreinfo="none">membership-software</literal>: a string
+containing the membership software identifier that the returned
+realms should match.</para></listitem>
+</itemizedlist>
+</para><para>
+The <parameter moreinfo="none">relevance</parameter> returned can be used to rank results from
+different discover calls to different providers. Implementors
+should return a positive number if the provider highly
+recommends that the realms be handled by this provider,
+or a zero if it can possibly handle the realms. Negative numbers
+should be returned if no realms are found.
+</para><para>
+This method does not return an error when no realms are
+discovered. It simply returns an empty <parameter moreinfo="none">realm</parameter> list.
+</para><para>
+To see diagnostic information about the discovery process,
+connect to the org.freedesktop.realmd.Service::Diagnostics
+signal.
+</para><para>
+This method requires authorization for the PolicyKit action
+called <literal moreinfo="none">org.freedesktop.realmd.discover-realm</literal>.
+</para><para>
+In addition to common DBus error results, this method may
+return:
+<itemizedlist>
+<listitem><para><literal moreinfo="none">org.freedesktop.realmd.Error.Failed</literal>:
+may be returned if the discovery could not be run for some reason.</para></listitem>
+<listitem><para><literal moreinfo="none">org.freedesktop.realmd.Error.Cancelled</literal>:
+returned if the operation was cancelled.</para></listitem>
+<listitem><para><literal moreinfo="none">org.freedesktop.realmd.Error.NotAuthorized</literal>:
+returned if the calling client is not permitted to perform a discovery
+operation.</para></listitem>
+</itemizedlist>
+</para>
+<variablelist role="params">
+<varlistentry>
+  <term><literal moreinfo="none">IN s <parameter moreinfo="none">string</parameter></literal>:</term>
+  <listitem><para>
+an input string to discover realms for
+</para></listitem>
+</varlistentry>
+<varlistentry>
+  <term><literal moreinfo="none">IN a{sv} <parameter moreinfo="none">options</parameter></literal>:</term>
+  <listitem><para>
+options for the discovery operation
+</para></listitem>
+</varlistentry>
+<varlistentry>
+  <term><literal moreinfo="none">OUT i <parameter moreinfo="none">relevance</parameter></literal>:</term>
+  <listitem><para>
+the relevance of the returned results
+</para></listitem>
+</varlistentry>
+<varlistentry>
+  <term><literal moreinfo="none">OUT ao <parameter moreinfo="none">realm</parameter></literal>:</term>
+  <listitem><para>
+a list of realms discovered
+</para></listitem>
+</varlistentry>
+</variablelist>
+</refsect2>
+</refsect1>
+<refsect1 role="details" id="gdbus-properties-org.freedesktop.realmd.Provider">
+  <title role="details.title">Property Details</title>
+<refsect2 role="property" id="gdbus-property-org-freedesktop-realmd-Provider.Name">
+  <title>The "Name" property</title>
+  <indexterm zone="gdbus-property-org-freedesktop-realmd-Provider.Name" significance="normal"><primary sortas="Provider:Name">org.freedesktop.realmd.Provider:Name</primary></indexterm>
+<programlisting format="linespecific">
+Name  readable   s
+</programlisting>
+<para>
+the name of the provider
+The name of the provider. This is not normally displayed
+to the user, but may be useful for diagnostics or debugging.
+</para>
+</refsect2>
+<refsect2 role="property" id="gdbus-property-org-freedesktop-realmd-Provider.Version">
+  <title>The "Version" property</title>
+  <indexterm zone="gdbus-property-org-freedesktop-realmd-Provider.Version" significance="normal"><primary sortas="Provider:Version">org.freedesktop.realmd.Provider:Version</primary></indexterm>
+<programlisting format="linespecific">
+Version  readable   s
+</programlisting>
+<para>
+the version of the provider
+The version of the provider. This is not normally used in
+logic, but may be useful for diagnostics or debugging.
+</para>
+</refsect2>
+<refsect2 role="property" id="gdbus-property-org-freedesktop-realmd-Provider.Realms">
+  <title>The "Realms" property</title>
+  <indexterm zone="gdbus-property-org-freedesktop-realmd-Provider.Realms" significance="normal"><primary sortas="Provider:Realms">org.freedesktop.realmd.Provider:Realms</primary></indexterm>
+<programlisting format="linespecific">
+Realms  readable   ao
+</programlisting>
+<para>
+a list of realms
+A list of known, enrolled or discovered realms. All realms
+that this provider knows about are listed here. As realms
+are discovered they are added to this list.
+</para><para>
+Each realm is represented by the DBus object path of the
+realm object.
+</para>
+</refsect2>
+</refsect1>
+</refentry>

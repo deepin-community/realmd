@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<refentry id="gdbus-org.freedesktop.realmd.Kerberos">
+  <refmeta>    <refentrytitle role="top_of_page" id="gdbus-interface-org-freedesktop-realmd-Kerberos.top_of_page">org.freedesktop.realmd.Kerberos</refentrytitle>
+  <indexterm zone="gdbus-interface-org-freedesktop-realmd-Kerberos.top_of_page" significance="normal"><primary sortas="Kerberos">org.freedesktop.realmd.Kerberos</primary></indexterm>
+  </refmeta>  <refnamediv>    <refname>org.freedesktop.realmd.Kerberos</refname>    <refpurpose>a kerberos realm</refpurpose>  </refnamediv>  <refsect1 role="properties">
+    <title role="properties.title">Properties</title>
+    <synopsis format="linespecific">
+<link linkend="gdbus-property-org-freedesktop-realmd-Kerberos.RealmName">RealmName</link>   readable   s
+<link linkend="gdbus-property-org-freedesktop-realmd-Kerberos.DomainName">DomainName</link>  readable   s
+</synopsis>
+  </refsect1>
+<refsect1 role="desc" id="gdbus-interface-org-freedesktop-realmd-Kerberos">
+  <title role="desc.title">Description</title>
+  <para>
+An interface that describes a kerberos realm in more detail. This
+is always implemented on an DBus object path that also implements
+the <link linkend="gdbus-interface-org-freedesktop-realmd-Realm.top_of_page">org.freedesktop.realmd.Realm</link> interface.
+</para>
+</refsect1>
+<refsect1 role="details" id="gdbus-properties-org.freedesktop.realmd.Kerberos">
+  <title role="details.title">Property Details</title>
+<refsect2 role="property" id="gdbus-property-org-freedesktop-realmd-Kerberos.RealmName">
+  <title>The "RealmName" property</title>
+  <indexterm zone="gdbus-property-org-freedesktop-realmd-Kerberos.RealmName" significance="normal"><primary sortas="Kerberos:RealmName">org.freedesktop.realmd.Kerberos:RealmName</primary></indexterm>
+<programlisting format="linespecific">
+RealmName  readable   s
+</programlisting>
+<para>
+the kerberos realm name
+The kerberos name for this realm. This is usually in upper
+case.
+</para>
+</refsect2>
+<refsect2 role="property" id="gdbus-property-org-freedesktop-realmd-Kerberos.DomainName">
+  <title>The "DomainName" property</title>
+  <indexterm zone="gdbus-property-org-freedesktop-realmd-Kerberos.DomainName" significance="normal"><primary sortas="Kerberos:DomainName">org.freedesktop.realmd.Kerberos:DomainName</primary></indexterm>
+<programlisting format="linespecific">
+DomainName  readable   s
+</programlisting>
+<para>
+the DNS domain name
+The DNS domain name for this realm.
+</para>
+</refsect2>
+</refsect1>
+</refentry>

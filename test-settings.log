@@ -1,0 +1,10 @@
+# ./build/tap-driver --test-name test-settings --log-file test-settings.log --trs-file test-settings.trs --color-tests no --enable-hard-errors yes --expect-failure no -- sh -c "$0" "$@" --tap ./test-settings
+# random seed: R02S768a3f9fa25e98957bb161b76e5deb74
+1..3
+# Start of realmd tests
+# Start of settings tests
+ok 1 /realmd/settings/string
+ok 2 /realmd/settings/double
+ok 3 /realmd/settings/boolean
+# End of settings tests
+# End of realmd tests

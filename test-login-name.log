@@ -1,0 +1,18 @@
+# ./build/tap-driver --test-name test-login-name --log-file test-login-name.log --trs-file test-login-name.trs --color-tests no --enable-hard-errors yes --expect-failure no -- sh -c "$0" "$@" --tap ./test-login-name
+# random seed: R02Sff890d9ba895697c58f46ca0923e51ff
+1..11
+# Start of realmd tests
+# Start of login-name tests
+ok 1 /realmd/login-name/format_Domain_User
+ok 2 /realmd/login-name/format_prefix_User_suffix
+ok 3 /realmd/login-name/format_user_domain
+ok 4 /realmd/login-name/parse_Domain_User
+ok 5 /realmd/login-name/parse_prefix_User_suffix
+ok 6 /realmd/login-name/parse_user_domain
+ok 7 /realmd/login-name/parse_Another_User
+ok 8 /realmd/login-name/parse_different_User_suffix
+ok 9 /realmd/login-name/parse_user_another
+ok 10 /realmd/login-name/parse-all
+ok 11 /realmd/login-name/parse-all-failed
+# End of login-name tests
+# End of realmd tests

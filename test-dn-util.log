@@ -1,0 +1,38 @@
+# ./build/tap-driver --test-name test-dn-util --log-file test-dn-util.log --trs-file test-dn-util.trs --color-tests no --enable-hard-errors yes --expect-failure no -- sh -c "$0" "$@" --tap ./test-dn-util
+# random seed: R02S5ab9374789b27fab52bc2a83518774fd
+1..29
+# Start of realmd tests
+# Start of samba-ou-format tests
+ok 1 /realmd/samba-ou-format/OU_One
+ok 2 /realmd/samba-ou-format/OU_One_ou_two
+ok 3 /realmd/samba-ou-format/Ou_One_Long_OU_two
+ok 4 /realmd/samba-ou-format/Ou_One_OU_two__ou_Three
+ok 5 /realmd/samba-ou-format/Ou_Test_Escape_Ou_Two
+ok 6 /realmd/samba-ou-format/Ou_Test__Escape_Ou_Two
+ok 7 /realmd/samba-ou-format/OU_One_DC_domain_dc_example_Dc_COM
+ok 8 /realmd/samba-ou-format/OU_One_OU_Two_Here_DC_domain_dc_example_Dc_COM
+ok 9 /realmd/samba-ou-format/OU_One_OU_Two_Here_DC_invalid_Dc_COM
+ok 10 /realmd/samba-ou-format/_
+ok 11 /realmd/samba-ou-format/_empty_
+ok 12 /realmd/samba-ou-format/OU
+ok 13 /realmd/samba-ou-format/OU_One_
+ok 14 /realmd/samba-ou-format/CN_Unsupported
+ok 15 /realmd/samba-ou-format/OU_One+CN_Unsupported
+ok 16 /realmd/samba-ou-format/DC_radi07__DC_segad__DC_lab__DC_sjc__DC_redhat__DC_com
+# End of samba-ou-format tests
+# Start of qualify-dn tests
+ok 17 /realmd/qualify-dn/OU_One
+ok 18 /realmd/qualify-dn/OU_One_ou_two
+ok 19 /realmd/qualify-dn/Ou_One_Long_OU_two
+ok 20 /realmd/qualify-dn/OU_One_DC_domain_dc_example_Dc_COM
+ok 21 /realmd/qualify-dn/OU_One_OU_Two_Here_DC_domain_dc_example_Dc_COM
+ok 22 /realmd/qualify-dn/OU_One_OU_Two_Here_DC_invalid_Dc_COM
+ok 23 /realmd/qualify-dn/_
+ok 24 /realmd/qualify-dn/_empty_
+ok 25 /realmd/qualify-dn/OU
+ok 26 /realmd/qualify-dn/OU_One_
+ok 27 /realmd/qualify-dn/CN_Test
+ok 28 /realmd/qualify-dn/OU_One+CN_Unsupported
+ok 29 /realmd/qualify-dn/DC_radi07__DC_segad__DC_lab__DC_sjc__DC_redhat__DC_com
+# End of qualify-dn tests
+# End of realmd tests

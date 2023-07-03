@@ -1,0 +1,26 @@
+# ./build/tap-driver --test-name test-safe-format --log-file test-safe-format.log --trs-file test-safe-format.trs --color-tests no --enable-hard-errors yes --expect-failure no -- sh -c "$0" "$@" --tap ./test-safe-format
+# random seed: R02Sd9516b7b3742146ba9c16e42001e6952
+1..19
+# Start of realmd tests
+ok 1 /realmd/safe-format-string
+# Start of safe-format tests
+ok 2 /realmd/safe-format/standard_string
+ok 3 /realmd/safe-format/empty_string
+ok 4 /realmd/safe-format/empty_format
+ok 5 /realmd/safe-format/right_aligned
+ok 6 /realmd/safe-format/left_aligned
+ok 7 /realmd/safe-format/width_right_aligned_space
+ok 8 /realmd/safe-format/width_left_aligned_space
+ok 9 /realmd/safe-format/precision_1_digit
+ok 10 /realmd/safe-format/precision_n_digits
+ok 11 /realmd/safe-format/precision_0_digits
+ok 12 /realmd/safe-format/multiple_simple_args
+ok 13 /realmd/safe-format/literal_percent
+ok 14 /realmd/safe-format/multiple_positional_args
+ok 15 /realmd/safe-format/skipping_arg
+ok 16 /realmd/safe-format/unsupported_conversion
+ok 17 /realmd/safe-format/bad_positional_arg
+ok 18 /realmd/safe-format/zero_positional_arg
+ok 19 /realmd/safe-format/too_many_args
+# End of safe-format tests
+# End of realmd tests

@@ -1,0 +1,20 @@
+# ./build/tap-driver --test-name test-sssd-config --log-file test-sssd-config.log --trs-file test-sssd-config.trs --color-tests no --enable-hard-errors yes --expect-failure no -- sh -c "$0" "$@" --tap ./test-sssd-config
+# random seed: R02Sef566a84284ec0ec4d4c0268bae9dc87
+# DEBUG: Loaded settings from: /home/ryanZzz/SRC/realmd-0.17.1/tests/files/realmd-defaults.conf /home/ryanZzz/SRC/realmd-0.17.1/tests/files/realmd-distro.conf /tmp/realmd-etc/realmd.conf
+1..12
+# Start of realmd tests
+# Start of sssd-config tests
+ok 1 /realmd/sssd-config/get-domains
+ok 2 /realmd/sssd-config/domain-section
+ok 3 /realmd/sssd-config/have-domain
+ok 4 /realmd/sssd-config/add-domain
+ok 5 /realmd/sssd-config/add-domain-already
+ok 6 /realmd/sssd-config/add-domain-only
+ok 7 /realmd/sssd-config/update-domain
+ok 8 /realmd/sssd-config/update-domain-missing
+ok 9 /realmd/sssd-config/remove-domain
+ok 10 /realmd/sssd-config/remove-domain-not-exist
+ok 11 /realmd/sssd-config/remove-domain-only
+ok 12 /realmd/sssd-config/remove-and-add-domain
+# End of sssd-config tests
+# End of realmd tests
